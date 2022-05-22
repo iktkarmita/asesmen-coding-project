@@ -3,7 +3,8 @@ cara mengatur project laravel saya
 1. install xampp versi XAMPP Version 8.0.13
 2. letakan hasil download project saya ke htdocs
 3. silahkan masuk ke cmd dan cari folder project saya
-4. ketikan di cmd php artisan optimize //untuk (Optimalisasi performa framework)
+4. silahkan ketikan di cmd, composer require laravel/ui //untuk menginstall vendor 
+5. ketikan di cmd php artisan optimize //untuk (Optimalisasi performa framework)
 
 ==============================================================================================================================
 cara menjalankan project laravel saya
