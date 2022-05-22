@@ -9,7 +9,7 @@ cara mengatur project laravel saya
 cara menjalankan project laravel saya
 
 1. bukak phpmyadmin di xampp 
-2. create database yg bernama laravel_karmite
+2. create database yg bernama karmiteshop_laravel_
 3. ketik di cmd php artisan migrate //untuk mengimpor data ke database tadi
 4. setelah itu bukak phpmyadmin cari table produks hapus semua barang karna itu hanya sebagai example atau contoh
 5. setelah kosong data di table produks
