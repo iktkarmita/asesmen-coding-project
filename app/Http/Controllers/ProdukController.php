@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Produks;
+use Illuminate\Http\Request;
+use App\Repositories\ProduksRepository;
+
+class ProdukController extends Controller
+{
+    private $ProduksRepository;
+    public function __construct(ProduksRepository $ProduksRepository)
+    {
+        $this->ProduksRepository = $ProduksRepository;
+    }
+    public function index()
+    {
+        $Produk = produks::all();
+
+        return view('product', compact(['Produk']));
+    }
+
+    public function show($id)
+    {
+        $Produk = $this->ProduksRepository->findById($id);
+        return view('produk', compact(['Produk']));
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "name": "Post",
+    "alias": "post",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Post\\Providers\\PostServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "admin_menu": [
+        {
+            "icon": "fa fa-edit",
+            "name": "Post",
+            "route": "admin/produk/post",
+            "permession": "view_prduk-post"
+        }
+    ],
+    "permession": [
+        "produk-post"
+    ]
+}
