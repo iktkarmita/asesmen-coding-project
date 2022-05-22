@@ -10,18 +10,17 @@ cara mengatur project laravel saya
 cara menjalankan project laravel saya
 
 1. bukak phpmyadmin di xampp 
-2. create database yg bernama karmiteshop_laravel_
-3. ketik di cmd php artisan migrate //untuk mengimpor data ke database tadi
-4. setelah itu bukak phpmyadmin cari table produks hapus semua barang karna itu hanya sebagai example atau contoh
-5. setelah kosong data di table produks
-6. pada saat mengupload gambar di produks, gambarnya terlihat di public, ketikan di cmd, php artisan storage:link
-7. jalankan di cmd php artisan serve
-8. silahkan register account dlu
-9. setelah itu login
-10. dan pergi ke menu Post Produk untuk mengupload data-data produks, beserta nama, keterangan, harga, persediaan, gambar produks
-11. setelah itu pergi ke bagian halaman awal website ('127.0.0.1:8000/')
-12. cari our product
-13. silahkan klik gambar product tadi
-14. terlihat ada nama, keterangan, harga, persediaan, dan update terakhir produk untuk memastikan produk masih tersedia jika persediaan habis
-
-
+2. create database yg bernama laravel_karmite
+3. ubah env.example menjadi .env
+4. ketik di cmd, php artisan migrate //untuk mengimpor data ke database tadi
+5. setelah itu bukak phpmyadmin cari table produks hapus semua barang karna itu hanya sebagai example atau contoh
+6. setelah kosong data di table produks
+7. pada saat mengupload gambar di produks, gambarnya terlihat di public, ketikan di cmd, php artisan storage:link
+8. jalankan di cmd php artisan serve
+9. silahkan register account dlu
+10. setelah itu login
+11. dan pergi ke menu Post Produk untuk mengupload data-data produks, beserta nama, keterangan, harga, persediaan, gambar produks
+12. setelah itu pergi ke bagian halaman awal website ('127.0.0.1:8000/')
+13. cari our product
+14. silahkan klik gambar product tadi
+15. terlihat ada nama, keterangan, harga, persediaan, dan update terakhir produk untuk memastikan produk masih tersedia jika persediaan habis
