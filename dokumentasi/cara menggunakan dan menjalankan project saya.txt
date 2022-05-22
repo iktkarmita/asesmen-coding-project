@@ -18,7 +18,8 @@ cara menjalankan project laravel saya
 7. silahkan register account dlu
 8. setelah itu login
 9. dan pergi ke menu Post Produk untuk mengupload data-data produks, beserta nama, keterangan, harga, persediaan, gambar produks
-10. setelah itu pergi ke bagian halaman awal website ('127.0.0.1:8000/')
-11. cari our product
-12. silahkan klik gambar product tadi
-13. terlihat ada nama, keterangan, harga, persediaan, dan update terakhir produk untuk memastikan produk masih tersedia jika persediaan habis
+10. setelah produks di tambahkan tampilan card akan panjang karna minimal 3 produks yg di tambahkan //disni memakai bootstrap column minimal 3 column card
+11. setelah itu pergi ke bagian halaman awal website ('127.0.0.1:8000/')
+12. cari our product
+13. silahkan klik gambar product tadi
+14. terlihat ada nama, keterangan, harga, persediaan, dan update terakhir produk untuk memastikan produk masih tersedia jika persediaan habis
