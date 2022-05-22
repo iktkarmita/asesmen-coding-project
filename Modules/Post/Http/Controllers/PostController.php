@@ -54,7 +54,7 @@ class PostController extends Controller
             'keterangan' => 'required',
             'harga' => 'required',
             'persediaan' => 'required',
-            'image' => 'image|file|max:4024'
+            'image' => 'image|file|min:100'
         ]);
 
         if ($request->file('image')) {
