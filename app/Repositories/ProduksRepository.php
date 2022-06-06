@@ -13,15 +13,7 @@ class ProduksRepository
             ->where('persediaan', 30)
             ->get()
             ->map(function ($Produk) {
-                return [
-                    'produk_id' => $Produk->id,
-                    'description' => $Produk->keterangan,
-                    'name' => $Produk->nama,
-                    'price' => $Produk->harga,
-                    'image' => $Produk->image,
-                    'persediaan' => $Produk->persediaan,
-                    'updated_at' => $Produk->updated_at
-                ];
+                return $this->format($Produk);
             });
         return $Produk;
     }
