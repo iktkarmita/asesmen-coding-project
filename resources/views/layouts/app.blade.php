@@ -117,17 +117,7 @@
             <i class="fas fa-store"></i>
             <span>Product</span></a>
      </li>
-        <!-- QUERY Menu ------->
-        <div class="sidebar-heading ">
-           Admin
-        </div>
-       
-        <li class="nav-item">
-            <a class="nav-link" href="{{url('/post')}}">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Post Produk</span>
-            </a>
-        </li>
+        
                 <hr class="sidebar-divider mt-3">
     
 
