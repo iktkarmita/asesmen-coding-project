@@ -21,8 +21,7 @@ use Modules\Test\Http\Controllers\TestController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [ProdukController::class, 'index']);
+Route::get('/', [ProdukController::class, 'index'])->name('produks.index');
 
 Route::get('/login', [UserController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
