@@ -60,7 +60,7 @@ class PostController extends Controller
             'keterangan' => 'required',
             'harga' => 'required',
             'persediaan' => 'required',
-            'image' => 'image|file|min:100'
+            'image' => 'image|file|min:5'
         ]);
 
         if ($request->file('image')) {
@@ -69,7 +69,8 @@ class PostController extends Controller
         //
         //dd($request->except(['_token', 'submit']));
         Produks::create($validatedData);
-        return redirect('/home')->with('success', 'New Image has been added!!');
+        session()->flash('success', 'Produks has been added !!');
+        return redirect('/post');
     }
 
     /**
