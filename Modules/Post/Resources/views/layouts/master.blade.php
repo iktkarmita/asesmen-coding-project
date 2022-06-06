@@ -110,11 +110,11 @@
                 <!-- Divider -->
                 <hr class="sidebar-divider">
              <!-- Nav Item - Dashboard -->
-             <li class="nav-item active ">
-                <a class="nav-link" href="{{url('/home')}}">
-                    <i class="fas fa-store"></i>
-                    <span>Product</span></a>
-             </li>
+            
+                <!-- QUERY Menu ------->
+                <div class="sidebar-heading ">
+                   Admin
+                </div>
                 <!-- QUERY Menu ------->
                 <div class="sidebar-heading ">
                    Admin
