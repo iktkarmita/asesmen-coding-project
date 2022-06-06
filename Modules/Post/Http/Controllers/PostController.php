@@ -29,7 +29,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('post::index');
+        $role = Auth::user()->role;
+
+        if ($role == '1') {
+            return view('post::index');
+        } else {
+            return redirect('/home');
+        }
     }
 
 
