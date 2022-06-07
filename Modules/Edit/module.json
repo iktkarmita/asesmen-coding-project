@@ -1,0 +1,13 @@
+{
+    "name": "Edit",
+    "alias": "edit",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Edit\\Providers\\EditServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
