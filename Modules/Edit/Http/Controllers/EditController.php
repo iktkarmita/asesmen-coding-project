@@ -97,7 +97,25 @@ class EditController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            'nama' => 'required|max:344',
+            'keterangan' => 'required',
+            'harga' => 'required',
+            'persediaan' => 'required',
+            'image' => 'image|file|min:5'
+        ];
+
+
+
+        $validatedData = $request->validate($data);
+
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
+
+        produks::where('id', $id)->update($validatedData);
+        session()->flash('success', 'Produks has been updated !!');
+        return redirect('/edit');
     }
 
     /**
