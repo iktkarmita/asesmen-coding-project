@@ -27,6 +27,7 @@ Route::get('/login', [UserController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 
+Route::put('/edit/post/{id}', [EditController::class, 'update']);
 Route::get('/post', [PostController::class, 'index']);
 Route::post('/post/store', [PostController::class, 'store']);
 Route::get('/{id}', [ProdukController::class, 'show']);
