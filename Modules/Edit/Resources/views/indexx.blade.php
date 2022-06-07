@@ -2,6 +2,11 @@
 
 @section('content')
 
+    @if (session()->has('success'))
+        <div class="alert alert-success" role="alert" style="">
+            {{ session()->get('success') }}
+        </div>
+    @endif
 
     <section id="product" class="product-area pt-100 pb-130 ">
         <div class="container">
