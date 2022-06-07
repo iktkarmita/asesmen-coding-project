@@ -2,13 +2,8 @@
 @section('content')
     <h1 style="">Edit Product</h1>
 
-    @if (session()->has('success'))
-        <div class="alert alert-success" role="alert" style="">
-            {{ session()->get('success') }}
-        </div>
-    @endif
-
-    <form style="" action="{{ url('/edit/post') }}" method="POST" enctype="multipart/form-data">
+    <form style="" action="/edit/post/{{ $Produk['produk_id'] }}" method="POST" enctype="multipart/form-data">
+    @method('put')
         @csrf
         <div class="col-sm-9 mb-3">
             <label for="id" class="form-label 
@@ -73,7 +68,7 @@
             @enderror
         </div>
         <div class="form-group row col-sm-9">
-            <div class="col-sm-3">Imagee</div>
+            <div class="col-sm-3">Image</div>
             <div class="col-sm-10">
                 <div class="row">
                     <div class="col-sm-4 mb-2">
@@ -82,13 +77,13 @@
                     <div class="col-sm-8">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="image" name="image">
-                            <label class="custom-file-label" for="image">Choose file</label>
+                            <label class="custom-file-label" for="image" id="image" name="image">Choose file</label>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <button type="submit" name="submit" class="btn btn-primary" style="margin-left: 10px" value="Save">Edit
+        </div> 
+        <button type="submit" class="btn btn-primary" style="margin-left: 10px">Edit
             Product</button>
     </form>
     </div>
