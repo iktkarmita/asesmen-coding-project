@@ -8,6 +8,9 @@ use Illuminate\Routing\Controller;
 use App\Http\Controllers\ProdukController;
 use Modules\Post\Models\Produks;
 use Modules\Post\Repositories\PostRepository;
+use Illuminate\Support\Facades\Auth;
+
+use function PHPUnit\Framework\assertTrue;
 
 class PostController extends Controller
 {
@@ -29,6 +32,8 @@ class PostController extends Controller
      */
     public function index()
     {
+
+
         $role = Auth::user()->role;
 
         if ($role == '1') {
@@ -37,7 +42,17 @@ class PostController extends Controller
             return redirect('/home');
         }
     }
+    public function index_edit()
+    {
+        $role = Auth::user()->role;
 
+        if ($role == '1') {
+            $Produk = $this->PostRepository->getAll();
+            return view('post::Update', compact(['Produk']));
+        } else {
+            return redirect('/home');
+        }
+    }
 
     /** 
      * Show the form for creating a new resource.
@@ -45,7 +60,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post::create');
     }
 
     /**
@@ -70,7 +84,7 @@ class PostController extends Controller
         //dd($request->except(['_token', 'submit']));
         Produks::create($validatedData);
         session()->flash('success', 'Produks has been added !!');
-        return redirect('/post');
+        $this->assertTrue(true, 200);
     }
 
     /**
@@ -90,7 +104,15 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        return view('post::edit');
+
+        $role = Auth::user()->role;
+
+        if ($role == '1') {
+            $Produk = $this->PostRepository->findById($id);
+            $this->assertTrue(true, 302);
+        } else {
+            return redirect('/home');
+        }
     }
 
     /**
@@ -101,7 +123,22 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            'nama' => 'required|max:344',
+            'keterangan' => 'required',
+            'harga' => 'required',
+            'persediaan' => 'required',
+            'image' => 'image|file|min:5'
+        ];
+
+        $validatedData = $request->validate($data);
+
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
+
+        produks::where('id', $id)->update($validatedData);
+        $this->assertTrue(true, 200);
     }
 
     /**
@@ -111,6 +148,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $id = $this->PostRepository->delete($id);
+        $this->assertTrue(true, 302);
     }
 }
