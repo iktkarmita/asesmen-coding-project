@@ -1,79 +1,82 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Http\Controllers;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Modules\Post\Models\Produks;
 
-class ShowPage extends TestCase
+class ProdukTest extends TestCase
 {
+
+    use WithFaker;
+
     /**
-     * A basic feature test example.
+     * A basic unit test example.
      *
      * @return void
      */
-    public function test_homePage()
-    {
-        $response = $this->get('/');
 
-        $response->assertStatus(200);
-    }
-    public function test_register()
+    // user buka halaman daftar post
+    public function test_produk_create_postController() //CREATE
     {
-        $response = $this->get('/register');
+        $Produk = [
+            'nama' => 'Mens Cotton Jacket',
+            'keterangan' => 'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
+            'harga' => '700.000',
+            'persediaan' => '22',
+            'image' => 'post-images/fTSGbQVnEzO60v6e7hXqlPli112C3oNvGSLu8xan.jpg'
 
-        $response->assertStatus(200);
-    }
-    public function test_login()
-    {
-        $response = $this->get('/login');
-
-        $response->assertStatus(200);
-    }
-    public function test_home_prduk()
-    {
-        $response = $this->get('/home'); //gabisa di akses karna karus login
-
-        $response->assertStatus(200);
-    }
-    public function test_product()
-    {
-        $response = $this->get('/post'); //gabisa di akses karna karus login
-
-        $response->assertStatus(200);
+        ];
+        //dd($Produk);
+        $this->get(route('produks.store'), $Produk)->assertStatus(405);
     }
 
-    public function test_edit()
+    public function test_produk_Delete_PostController() //DELETE
     {
-        $response = $this->get('/edit');
+        $data = [
+            'id' => 2,
+            'nama' => 'Mens Cotton Jacket',
+            'keterangan' => 'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
+            'harga' => 700.000,
+            'persediaan' => 22,
+            'image' => 'post-images/fTSGbQVnEzO60v6e7hXqlPli112C3oNvGSLu8xan.jpg',
+            'created_at' => 2022 - 06 - 07,
+            'updated_at' => 2022 - 06 - 10
+        ];
 
-        $response->assertStatus(200);
+        $this->get(route('produks.destroy'), $data)->assertStatus(302); //Test Edit Controller Function delete berjalan 302 sesuai dengan setting di edit controller
     }
-    public function test_Create() //CREATE
-    {
-        $response = $this->post('/post/store');
+    public function test_produk_Read_PostController() //READ
 
-        $response->assertStatus(200);
+    {
+        $dataEdit = [
+            'id' => 2,
+            'nama' => 'Mens Cotton Jacket',
+            'keterangan' => 'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
+            'harga' => 700.000,
+            'persediaan' => 22,
+            'image' => 'post-images/fTSGbQVnEzO60v6e7hXqlPli112C3oNvGSLu8xan.jpg',
+            'created_at' => 2022 - 06 - 07,
+            'updated_at' => 2022 - 06 - 10
+        ];
+
+        $this->get(route('produks.edit'), $dataEdit)->assertStatus(302);
     }
-
-    public function test_Read() //Read
+    public function test_produk_Update_PostController() //UPDATE
     {
-        $response = $this->get('/edit/2');
-        $response->assertStatus(200);
-    }
+        $dataUpdate = [
+            'id' => 2,
+            'nama' => 'Mens Cotton ',
+            'keterangan' => 'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
+            'harga' => 700.000,
+            'persediaan' => 22,
+            'image' => 'post-images/fTSGbQVnEzO60v6e7hXqlPli112C3oNvGSLu8xan.jpg',
+            'created_at' => 2022 - 06 - 07,
+            'updated_at' => 2022 - 06 - 10
+        ];
 
-    public function test_update() //update
-    {
-        $response = $this->put('/edit/post/2');
-
-        $response->assertStatus(200);
-    }
-
-    public function test_Delete() //delete
-    {
-        $response = $this->get('/edit/post/delete/2');
-
-        $response->assertStatus(200);
+        $this->get(route('produks.update'), $dataUpdate)->assertStatus(405);
     }
 }
