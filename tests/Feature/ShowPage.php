@@ -43,4 +43,37 @@ class ShowPage extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_edit()
+    {
+        $response = $this->get('/edit');
+
+        $response->assertStatus(200);
+    }
+    public function test_Create() //CREATE
+    {
+        $response = $this->post('/post/store');
+
+        $response->assertStatus(200);
+    }
+
+    public function test_Read() //Read
+    {
+        $response = $this->get('/edit/2');
+        $response->assertStatus(200);
+    }
+
+    public function test_update() //update
+    {
+        $response = $this->put('/edit/post/2');
+
+        $response->assertStatus(200);
+    }
+
+    public function test_Delete() //delete
+    {
+        $response = $this->get('/edit/post/delete/2');
+
+        $response->assertStatus(200);
+    }
 }
