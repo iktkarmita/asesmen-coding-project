@@ -15,7 +15,7 @@ class ProdukController extends Controller
     }
     public function index()
     {
-        $Produk = produks::all();
+        $Produk = $this->ProduksRepository->getAll(); 
 
         return view('product', compact(['Produk']));
     }
