@@ -9,6 +9,8 @@ use App\Http\Controllers\ProdukController;
 use Modules\Post\Models\Produks;
 use Modules\Post\Repositories\PostRepository;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
 
 use function PHPUnit\Framework\assertTrue;
 
@@ -42,7 +44,7 @@ class PostController extends Controller
             return redirect('/home');
         }
     }
-    public function index_edit()
+    public function index_Produk()
     {
         $role = Auth::user()->role;
 
@@ -70,7 +72,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama' => 'required|max:344',
+            'nama' => 'required|max:11',
             'keterangan' => 'required',
             'harga' => 'required',
             'persediaan' => 'required',
@@ -84,7 +86,7 @@ class PostController extends Controller
         //dd($request->except(['_token', 'submit']));
         Produks::create($validatedData);
         session()->flash('success', 'Produks has been added !!');
-        $this->assertTrue(true, 200);
+        return redirect('/edit');
     }
 
     /**
@@ -102,14 +104,14 @@ class PostController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function ProdukEdit($id)
     {
 
         $role = Auth::user()->role;
 
         if ($role == '1') {
             $Produk = $this->PostRepository->findById($id);
-            $this->assertTrue(true, 302);
+            return view('post::editt', compact(['Produk']));
         } else {
             return redirect('/home');
         }
@@ -138,7 +140,7 @@ class PostController extends Controller
         }
 
         produks::where('id', $id)->update($validatedData);
-        $this->assertTrue(true, 200);
+        return redirect('/edit');
     }
 
     /**
@@ -149,6 +151,6 @@ class PostController extends Controller
     public function destroy($id)
     {
         $id = $this->PostRepository->delete($id);
-        $this->assertTrue(true, 302);
+        return redirect('/edit');
     }
 }
