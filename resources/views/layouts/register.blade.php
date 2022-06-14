@@ -10,22 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!--====== Title ======-->
-    <title>karmiteShop</title>
+    <title>karmite</title>
     
-    @yield('stylesss')
+    @yield('styless')
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-     <!-- Scripts -->
-     <script src="{{ asset('js/app.js') }}" defer></script>
-
-     <!-- Fonts -->
-     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
- 
-     <!-- Styles -->
-     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 
     <!--====== Bootstrap css ======-->
@@ -55,7 +45,7 @@
     
 </head>
 
-<body >
+<body style="background: rgb(255, 255, 255)">
    
     <!--====== HEADER PART ENDS ======-->
     <div id="app">
@@ -89,9 +79,31 @@
 
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ml-auto ">
-                                    
-                                  
+                                    <li class="nav-item ">
+                                        <a data-scroll-nav="0" href="{{ url('/') }}#home">HomePage</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a data-scroll-nav="0" href="{{ url('/post') }}">Explore All</a> 
+                                    </li>
                                    
+                                    <li class="nav-item">
+                                        <a data-scroll-nav="0" href="{{ url('/') }}#product">Products</a>
+                                    </li>
+                                    <li class="nav-item">
+                                   
+                                        <a data-scroll-nav="0" href="{{ url('/') }}#team">Web Dev</a>
+                                    </li>
+                                  
+                                    @if (Route::has('login'))
+                                       <li class="nav-item">
+                                           <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                                        </li>
+                                                @if (Route::has('register'))
+                                                <li class="nav-item active">  
+                                                    <a href="{{ route('register') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                                                </li>    
+                                                @endif   
+                                    @endif
                                 </ul> <!-- navbar nav -->
                             </div>
                         </nav> <!-- navbar -->
@@ -101,9 +113,43 @@
         </header>
 
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        @yield('contentt')
     </div>
+    
+
+
+    <!--====== jquery js ======-->
+    <script src="{{ asset('assets/js/vendor/modernizr-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
+
+    <script src="{{ asset('js/app.js') }}"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    
+    
+    <!--====== Slick js ======-->
+    <script src="{{ asset('assets/js/slick.min.js' )}}"></script>
+    
+    <!--====== Magnific Popup js ======-->
+    <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+
+    
+    <!--====== nav js ======-->
+    <script src="{{ asset('assets/js/jquery.nav.js') }}"></script>
+    
+    <!--====== Nice Number js ======-->
+    <script src="{{ asset('assets/js/jquery.nice-number.min.js') }}"></script>
+    
+    <!--====== Main js ======-->
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    @yield('scriptss')
+
+    <script>
+        window.onbeforeunload = function(){
+            window.scrollTo(0,0);
+        }
+    </script>
 </body>
+
 </html>

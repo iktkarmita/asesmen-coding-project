@@ -31,17 +31,19 @@ Route::get('/register', [RegisterController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'index']);
 
-Route::get('/edit', [PostController::class, 'index_edit']);
+Route::get('/edit', [PostController::class, 'index_Produk']);
 
 Route::get('/post', [PostController::class, 'index']);
 
 Route::post('/post/store', [PostController::class, 'store'])->name('produks.store'); //CREATE .
 
-Route::get('/edit/2', [PostController::class, 'edit'])->name('produks.edit'); //READ .
-Route::put('/edit/post/2', [PostController::class, 'update'])->name('produks.update'); //UPDATE
+Route::get('/edit/{id}', [PostController::class, 'ProdukEdit'])->name('produks.edit'); //READ .
+Route::put('/edit/post/{id}', [PostController::class, 'update'])->name('produks.update'); //UPDATE
 
-Route::get('/edit/post/delete/2', [PostController::class, 'destroy'])->name('produks.destroy'); //DELETE .ketika testing saya merubah {id} menjadi angka 1 untuk mengecek id produk 1
+Route::get('/edit/post/delete/{id}', [PostController::class, 'destroy'])->name('produks.destroy'); //DELETE .ketika testing saya merubah {id} menjadi angka 1 untuk mengecek id produk 1
 
 Route::get('/{id}', [ProdukController::class, 'show']);
+
+Route::get('/home/cart/{id}', [HomeController::class, 'cartt'])->name('produks.cart'); //cart 
 
 Auth::routes();

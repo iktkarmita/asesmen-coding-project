@@ -80,18 +80,18 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ml-auto ">
                                     <li class="nav-item active">
-                                        <a data-scroll-nav="0" href="{{ url('/') }}">HomePage</a>
+                                        <a data-scroll-nav="0" href="{{ url('/') }}#home">HomePage</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a data-scroll-nav="0" href="{{ url('/home') }}">Explore All</a> 
+                                        <a data-scroll-nav="0" href="{{ url('/post') }}">Explore All</a> 
                                     </li>
                                    
                                     <li class="nav-item">
-                                        <a data-scroll-nav="0" href="#product">Products</a>
+                                        <a data-scroll-nav="0" href="{{ url('/') }}#product">Products</a>
                                     </li>
                                     <li class="nav-item">
                                    
-                                        <a data-scroll-nav="0" href="#team">Web Dev</a>
+                                        <a data-scroll-nav="0" href="{{ url('/') }}#team">Web Dev</a>
                                     </li>
                                   
                                     @if (Route::has('login'))

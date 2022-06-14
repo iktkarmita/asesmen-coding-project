@@ -2,6 +2,7 @@
 
 namespace Modules\Post\Repositories;
 
+use Illuminate\Support\Str;
 use Modules\Post\Models\Produks;
 
 class PostRepository

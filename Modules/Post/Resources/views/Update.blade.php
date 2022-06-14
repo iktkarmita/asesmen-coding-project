@@ -32,7 +32,8 @@
                                 <img src="{{ asset('storage/' . $p->image) }}" class="card-img-top  card--color"
                                     alt={{ $p->nama }} height="250px">
                                 <div class="card-body">
-                                    <h5 class="card-title text-dark mb-0">{{ $p->nama }}
+                                    <h5 class="card-title text-dark mb-0">
+                                        {{ $p->nama }}
                                     </h5>
                                     <p class="card-text text-dark lead fw-bold">Rp.{{ $p->harga }}
                                     </p>

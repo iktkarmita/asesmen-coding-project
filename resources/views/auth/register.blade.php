@@ -1,8 +1,9 @@
 @extends('layouts.register')
 @section('styless')
 @endsection
-@section('content')
-<div class="container">
+@section('contentt') 
+
+<div class="container" style="margin-top:200px" id="register">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

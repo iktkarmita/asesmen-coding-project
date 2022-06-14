@@ -1,7 +1,7 @@
- @extends('layouts.frontend')
+ @extends('layouts.produkFront')
  @section('styles')
  @endsection
- @section('content')
+ @section('content') 
    
    
     <!--====== PRODUCT PART START ======-->
