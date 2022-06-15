@@ -13,7 +13,7 @@ class PostRepository
     }
     public function findById($id)
     {
-        $Produk = produks::where('id', $id)->firstOrFail();
+        $Produk = Produks::where('id', $id)->firstOrFail();
         return $this->format($Produk);
     }
 
