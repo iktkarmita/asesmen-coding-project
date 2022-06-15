@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-1 col-md-3 ">
-                    <div class="collection-menu text-center mt-30">
+                    <div class="collection-menu text-center">
                         <h4 class="mb-2">PRODUCT</h4>
 
                     </div> <!-- collection menu -->

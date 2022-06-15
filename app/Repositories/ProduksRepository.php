@@ -8,19 +8,18 @@ class ProduksRepository
 {
     public function getAll()
     {
-        $Produk = produks::orderBy('nama')
-            ->where('harga', 4000)
-            ->where('persediaan', 30)
-            ->get()
-            ->map(function ($Produk) {
-                return $this->format($Produk);
-            });
-        return $Produk;
+        return Produks::all();
     }
 
     public function findById($id)
     {
         $Produk = produks::where('id', $id)->firstOrFail();
+        return $this->format($Produk);
+    }
+
+    public function delete($id)
+    {
+        $Produk = Produks::where('id', $id)->delete();
         return $this->format($Produk);
     }
 
