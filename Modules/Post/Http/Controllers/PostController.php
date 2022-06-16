@@ -32,7 +32,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index_Produk()
+    public function index_Produk() //READ FOR ADMIN
     {
 
         $Produk = $this->PostRepository->getAll();
@@ -53,7 +53,7 @@ class PostController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(Request $request) //CREATE FOR ADMIN
     {
         $validatedData = Validator::make($request->all(), [
             'nama' => 'required|max:11',
@@ -88,7 +88,7 @@ class PostController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function ProdukEdit($id)
+    public function ProdukEdit($id) //SHOW FOR ADMIN
     {
         $Produk = $this->PostRepository->findById($id);
         return $Produk;
@@ -100,7 +100,7 @@ class PostController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) //UPDATE FOR ADMIN
     {
         $Produk = Produks::findOrFail($id); //Melanjutkan jika ada data id, jika tidak maka tidak di lanjutkan
 
@@ -126,7 +126,7 @@ class PostController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy($id) //DELETE FOR ADMIN
     {
         $id = $this->PostRepository->delete($id);
         return $id; //200 OK
