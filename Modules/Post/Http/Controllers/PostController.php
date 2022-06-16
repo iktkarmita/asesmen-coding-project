@@ -93,7 +93,7 @@ class PostController extends Controller
         ];
         return response()->json($response, Response::HTTP_OK); //200 OK
     }
-    public function ProdukEdit($id) //READ ATAU MENAMPILKAN DATA BERDASARLAN  ID
+    public function ProdukEdit($id) //SHOW ATAU MENAMPILKAN DATA BERDASARLAN  ID
     {
         $Produk = Produks::findOrFail($id);  //Melanjutkan jika ada data id, jika tidak maka tidak di lanjutkan
 
