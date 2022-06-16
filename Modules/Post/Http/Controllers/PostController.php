@@ -9,31 +9,51 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ProdukController;
-use function PHPUnit\Framework\assertTrue;
-
-
-
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Database\Events\QueryExecuted;
-use Illuminate\Database\QueryException;
 use Modules\Post\Repositories\PostRepository;
 use Symfony\Component\HttpFoundation\Response;
 
+
 class PostController extends Controller
 {
-
-    public function index_Produk() //READ
+    /**
+    
+     * @return void
+     */
+    private $ProduksRepository;
+    public function __construct(PostRepository $PostRepository)
     {
 
-        $Produk = Produks::all();
-        $response = [
-            'message' => 'List PRODUK order by id',
-            'data' => $Produk
-        ];
-
-        return response()->json($response, Response::HTTP_OK); //200 OK
+        $this->PostRepository = $PostRepository;
     }
-    public function store(Request $request) //CREATE
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index_Produk()
+    {
+
+        $Produk = $this->PostRepository->getAll();
+        return $Produk;
+    }
+
+
+    /** 
+     * Show the form for creating a new resource.
+     * @return Renderable 
+     */
+    public function create()
+    {
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     * @param Request $request
+     * @return Renderable
+     */
+    public function store(Request $request)
     {
         $validatedData = Validator::make($request->all(), [
             'nama' => 'required|max:11',
@@ -43,29 +63,44 @@ class PostController extends Controller
             'image' => 'min:5'
         ]);
 
-        if ($validatedData->fails()) {
-            return response()->json($validatedData->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
-
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('post-images');
         }
-
-
-        $Produk = Produks::create($request->all());
-
-        $response = [
-            'message' => 'PRODUK berhasil di tambah!!',
-            'data' => $Produk
-        ];
-        return response()->json($response, Response::HTTP_CREATED); //201 OK
         //
         //dd($request->except(['_token', 'submit']));
-        //Produks::create($validatedData);
-        //session()->flash('success', 'Produks has been added !!');
-        // redirect('/edit');
+        Produks::create($request->all());
+
+        return redirect('/edit'); //200 OK
     }
-    public function update(Request $request, $id) //UPDATE
+
+    /**
+     * Show the specified resource.
+     * @param int $id
+     * @return Renderable
+     */
+    public function show($id)
+    {
+        return view('post::show');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     * @param int $id
+     * @return Renderable
+     */
+    public function ProdukEdit($id)
+    {
+        $Produk = $this->PostRepository->findById($id);
+        return $Produk;
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * @param Request $request
+     * @param int $id
+     * @return Renderable
+     */
+    public function update(Request $request, $id)
     {
         $Produk = Produks::findOrFail($id); //Melanjutkan jika ada data id, jika tidak maka tidak di lanjutkan
 
@@ -77,41 +112,23 @@ class PostController extends Controller
             'image' => 'min:5'
         ]);
 
-        if ($validatedData->fails()) {
-            return response()->json($validatedData->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
 
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('post-images');
         }
 
         $Produk->update($request->all());
-
-        $response = [
-            'message' => 'PRODUK berhasil di Perbarui!!',
-            'data' => $Produk
-        ];
-        return response()->json($response, Response::HTTP_OK); //200 OK
+        return redirect('/edit'); //200 OK
     }
-    public function ProdukEdit($id) //SHOW ATAU MENAMPILKAN DATA BERDASARLAN  ID
+
+    /**
+     * Remove the specified resource from storage.
+     * @param int $id
+     * @return Renderable
+     */
+    public function destroy($id)
     {
-        $Produk = Produks::findOrFail($id);  //Melanjutkan jika ada data id, jika tidak maka tidak di lanjutkan
-
-        $response = [
-            'message' => 'PRODUK Detail ',
-            'data' => $Produk
-        ];
-        return response()->json($response, Response::HTTP_OK); //200 OK
-    }
-    public function destroy($id) //DELETE DATA
-    {
-        $Produk = Produks::findOrFail($id);  //Melanjutkan jika ada data id, jika tidak maka tidak di lanjutkan
-
-        $Produk->delete();
-
-        $response = [
-            'message' => 'PRODUK di Hapus Berhasil !! '
-        ];
-        return response()->json($response, Response::HTTP_OK); //200 OK
+        $id = $this->PostRepository->delete($id);
+        return $id;
     }
 }
