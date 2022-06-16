@@ -68,9 +68,13 @@ class PostController extends Controller
         }
         //
         //dd($request->except(['_token', 'submit']));
-        Produks::create($request->all());
+        $Produk = Produks::create($request->all());
 
-        return redirect('/edit'); //200 OK
+        $response = [
+            'message' => 'PRODUK berhasil di tambah!!',
+            'data' => $Produk
+        ];
+        return response()->json($response, Response::HTTP_CREATED); //201 OK
     }
 
     /**
