@@ -40,7 +40,7 @@ Route::post('/post/store', [PostController::class, 'store'])->name('produks.stor
 Route::get('/edit/{id}', [PostController::class, 'ProdukEdit'])->name('produks.edit'); //READ .
 Route::put('/edit/post/{id}', [PostController::class, 'update'])->name('produks.update'); //UPDATE
 
-Route::get('/edit/post/delete/{id}', [PostController::class, 'destroy'])->name('produks.destroy'); //DELETE .ketika testing saya merubah {id} menjadi angka 1 untuk mengecek id produk 1
+Route::get('/edit/post/delete/{id}', [PostController::class, 'destroy'])->name('produks.destroy'); //DELETE 
 
 Route::get('/{id}', [ProdukController::class, 'show']);
 

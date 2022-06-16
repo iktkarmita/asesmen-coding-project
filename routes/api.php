@@ -19,3 +19,9 @@ use Modules\Post\Http\Controllers\PostController;
 Route::get('/edit', [PostController::class, 'index_Produk']); //READ
 
 Route::post('/post/store', [PostController::class, 'store']); //CREATE
+
+Route::put('/edit/post/{id}', [PostController::class, 'update']); //UPDATE
+
+Route::get('/edit/{id}', [PostController::class, 'ProdukEdit']); //READ ATAU MENAMPILKAN DATA BERDASARKAN ID
+
+Route::get('/edit/post/delete/{id}', [PostController::class, 'destroy']); //DELETE 
