@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ApiTest extends TestCase
 {
-    //=========================TEST UNIT CRUD UNTUK ADMIN =================//
+    //=========================TEST UNIT CRUD UNTUK ADMIN =================// Note : jika error ketik php artisan optimize untuk merefresh framework Laravel dan membersihkan cache
     public function test_read_admin() //READ
     {
         $this->json('GET', 'api/edit',  ['Accept' => 'application/json'])
@@ -33,18 +33,18 @@ class ApiTest extends TestCase
     public function test_update_admin() //UPDATE
     {
         $data = [
-            "nama" => "Girl Cotton",
+            "nama" => "efef",
             "keterangan" => "Girl Cotton test",
             "harga" => 70.000,
             "persediaan" => 20,
             "image" => "baju3.jpg"
         ];
-        $this->json('PUT', 'api/edit/post/33', $data, ['Accept' => 'application/json'])
-            ->assertStatus(302); //302 karena berhasil di UPDATE . NOTE : SUDAH DI CEK DI DATABASE LANGSUNG
+        $this->json('PUT', 'api/edit/post/25', $data, ['Accept' => 'application/json'])
+            ->assertStatus(200); //200 karena berhasil di UPDATE . NOTE : SUDAH DI CEK DI DATABASE LANGSUNG
     }
     public function test_delete_admin() //DELETE
     {
-        $this->json('GET', 'api/edit/post/delete/35',  ['Accept' => 'application/json'])
+        $this->json('GET', 'api/edit/post/delete/29',  ['Accept' => 'application/json'])
             ->assertStatus(200); //200 karena berhasil di DELETE . NOTE : SUDAH DI CEK DI DATABASE LANGSUNG
     }
     public function test_show_admin() //SHOW FOR ADMIN ATAY MENAMPILKAN PRODUK SESUAI ID
@@ -52,7 +52,7 @@ class ApiTest extends TestCase
         $this->json('GET', 'api/edit/33',  ['Accept' => 'application/json'])
             ->assertStatus(200); //200 karena hanya get data . 
     }
-    //=========================TEST UNIT UNTUK USER =================//
+    //=========================TEST UNIT UNTUK USER =================// Note : jika error ketik php artisan optimize untuk merefresh framework Laravel dan membersihkan cache
     public function test_Read_user() //READ FOR USER
     {
         $this->json('GET', 'api/',  ['Accept' => 'application/json'])

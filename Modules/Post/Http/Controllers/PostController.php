@@ -122,7 +122,12 @@ class PostController extends Controller
         }
 
         $Produk->update($request->all());
-        return redirect('/edit'); //200 OK
+
+        $response = [
+            'message' => 'PRODUK berhasil di Perbarui!!',
+            'data' => $Produk
+        ];
+        return response()->json($response, Response::HTTP_OK); //200 OK
     }
 
     /**
