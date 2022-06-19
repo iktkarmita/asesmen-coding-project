@@ -2,8 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Modules\Post\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdukController;
+
+use App\Http\Controllers\RegisterController;
+use Modules\Post\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +36,9 @@ Route::get('/edit/post/delete/{id}', [PostController::class, 'destroy']); //DELE
 Route::get('/', [ProdukController::class, 'index']); //READ
 
 Route::get('/{id}', [ProdukController::class, 'show']); //SHOW ATAU MENAMPILKAN DATA BERDASARKAN ID
+
+//================ LOGIN DAN REGISTER ====================//
+
+Route::post('/login', [UserController::class, 'loginTest']);
+
+Route::post('/register', [RegisterController::class, 'registerTest']);

@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Http\Controllers;
+use App\Models\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Modules\Post\Models\Produks;
@@ -62,5 +63,29 @@ class ApiTest extends TestCase
     {
         $this->json('GET', 'api/33',  ['Accept' => 'application/json'])
             ->assertStatus(200); //200 karena hanya get data. 
+    }
+    //=========================TEST UNIT LOGIN DAN REGISTER=====================//
+    public function test_register()
+    {
+        $user = [
+            "name" => "aaaa",
+            "email" => "admin@gmail.com",
+            "password" => "12345678",
+            "password_confirmation" => "12345678"
+
+        ];
+
+        $this->json('POST', 'api/register', $user, ['Accept' => 'application/json'])
+            ->assertStatus(201); //201 created
+    }
+    public function test_login()
+    {
+        $user = [
+            "email" => "admin@gmail.com",
+            "password" => "12345678"
+        ];
+
+        $this->json('POST', 'api/login', $user, ['Accept' => 'application/json'])
+            ->assertStatus(200); //200 ok akses
     }
 }

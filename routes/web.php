@@ -26,8 +26,8 @@ use Modules\Test\Http\Controllers\TestController;
 //Route::get('/', [ProdukController::class, 'index'])->name('produks.index');
 
 
-Route::get('/login', [UserController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
+//Route::get('/login', [UserController::class, 'index']);
+//Route::get('/register', [RegisterController::class, 'index']);
 
 //Route::get('/home', [HomeController::class, 'index']);
 
