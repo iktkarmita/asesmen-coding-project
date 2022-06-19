@@ -40,17 +40,17 @@ class ApiTest extends TestCase
             "persediaan" => 20,
             "image" => "baju3.jpg"
         ];
-        $this->json('PUT', 'api/edit/post/25', $data, ['Accept' => 'application/json'])
+        $this->json('PUT', 'api/edit/post/2', $data, ['Accept' => 'application/json'])
             ->assertStatus(200); //200 karena berhasil di UPDATE . NOTE : SUDAH DI CEK DI DATABASE LANGSUNG
     }
     public function test_delete_admin() //DELETE
     {
-        $this->json('GET', 'api/edit/post/delete/29',  ['Accept' => 'application/json'])
+        $this->json('GET', 'api/edit/post/delete/1',  ['Accept' => 'application/json'])
             ->assertStatus(200); //200 karena berhasil di DELETE . NOTE : SUDAH DI CEK DI DATABASE LANGSUNG
     }
     public function test_show_admin() //SHOW FOR ADMIN ATAY MENAMPILKAN PRODUK SESUAI ID
     {
-        $this->json('GET', 'api/edit/33',  ['Accept' => 'application/json'])
+        $this->json('GET', 'api/edit/2',  ['Accept' => 'application/json'])
             ->assertStatus(200); //200 karena hanya get data . 
     }
     //=========================TEST UNIT UNTUK USER =================// Note : jika error ketik php artisan optimize untuk merefresh framework Laravel dan membersihkan cache
@@ -61,14 +61,14 @@ class ApiTest extends TestCase
     }
     public function test_show_user() //SHOW FOR USER
     {
-        $this->json('GET', 'api/33',  ['Accept' => 'application/json'])
+        $this->json('GET', 'api/2',  ['Accept' => 'application/json'])
             ->assertStatus(200); //200 karena hanya get data. 
     }
     //=========================TEST UNIT LOGIN DAN REGISTER=====================//
     public function test_register()
     {
         $user = [
-            "name" => "aaaa",
+            "name" => "admin",
             "email" => "admin@gmail.com",
             "password" => "12345678",
             "password_confirmation" => "12345678"
