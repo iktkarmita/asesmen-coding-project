@@ -14,7 +14,7 @@ class UrlTest extends TestCase
      * @return void
      */
 
-    //================================= INI HANYA TEST URL SAJA JADI ADA YG ERORR KARENA HARUS DI INPUTKAN DATA | ADA 4 YG EROR method POST, PUT ===============================//
+    //================================= INI HANYA TEST URL SAJA JADI ADA YG ERORR KARENA HARUS DI INPUTKAN DATA | ADA 3 YG EROR method POST ===============================//
     public function test_homePage()
     {
         $response = $this->get('api/'); //READ FOR USER
@@ -45,12 +45,12 @@ class UrlTest extends TestCase
 
         $response->assertStatus(200);
     }
-    public function test_product()
-    {
-        $response = $this->get('api/post'); //halaman dashboard admin akses ketika admin sudah login
+    //public function test_product()
+    //{
+    //$response = $this->get('api/post'); //halaman dashboard admin akses ketika admin sudah login halaman view tidak ada halaman akan di buat pkek vue js
 
-        $response->assertStatus(200);
-    }
+    //$response->assertStatus(200);
+    //}
 
     public function test_edit()
     {
@@ -73,7 +73,7 @@ class UrlTest extends TestCase
 
     public function test_update() //UPDATE FOR ADMIN
     {
-        $response = $this->put('api/edit/post/6'); //tidak bisa karena tidak ada data yg di inputkan (4)
+        $response = $this->put('api/edit/post/6');
 
         $response->assertStatus(200);
     }
