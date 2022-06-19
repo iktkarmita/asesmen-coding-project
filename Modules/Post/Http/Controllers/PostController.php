@@ -20,7 +20,7 @@ class PostController extends Controller
     
      * @return void
      */
-    private $ProduksRepository;
+    //private $PostRepository;
     public function __construct(PostRepository $PostRepository)
     {
 
@@ -32,6 +32,11 @@ class PostController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    public function index() //Halaman Dashboard Admin
+    {
+        return view('post::index');
+    }
     public function index_Produk() //READ FOR ADMIN
     {
 

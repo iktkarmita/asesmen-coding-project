@@ -2,34 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produks;
 use Illuminate\Http\Request;
+use Modules\Post\Models\Produks;
+use Illuminate\Routing\Controller;
 use App\Repositories\ProduksRepository;
 
+use Symfony\Component\HttpFoundation\Response;
 
-class HomeController extends Controller
+
+class ProduksController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    private $ProduksRepository;
-    public function __construct(ProduksRepository $ProduksRepository)
-    {
-        $this->middleware('auth');
-        $this->ProduksRepository = $ProduksRepository;
-    }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
+    public function home()
     {
-        $Produk = produks::all();
-
-        return view('home', compact(['Produk']));
+        $Produk = $this->ProduksRepository->getAll();
+        return $Produk;
     }
 }

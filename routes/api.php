@@ -2,9 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProdukController;
 
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\ProduksController;
 use App\Http\Controllers\RegisterController;
 use Modules\Post\Http\Controllers\PostController;
 
@@ -35,6 +37,12 @@ Route::get('/edit/post/delete/{id}', [PostController::class, 'destroy']); //DELE
 
 Route::get('/', [ProdukController::class, 'index']); //READ
 
+//============= Halaman Dashboard user ketika sesudah login =================//
+
+Route::get('/home', [ProdukController::class, 'home']); //Dashboard User / Pengunjung ketika sesudah login
+
+// ============================= Halaman Utama Web page untuk USER ========================== //
+
 Route::get('/{id}', [ProdukController::class, 'show']); //SHOW ATAU MENAMPILKAN DATA BERDASARKAN ID
 
 //================ LOGIN DAN REGISTER ====================//
@@ -42,3 +50,7 @@ Route::get('/{id}', [ProdukController::class, 'show']); //SHOW ATAU MENAMPILKAN 
 Route::post('/login', [UserController::class, 'loginTest']);
 
 Route::post('/register', [RegisterController::class, 'registerTest']);
+
+//============= Halaman Dashboard admin ketika sesudah login =================//
+
+Route::get('/post', [PostController::class, 'index']); //Dashboard Admin 

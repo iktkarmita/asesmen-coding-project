@@ -24,4 +24,9 @@ class ProdukController extends Controller
         $Produk = $this->ProduksRepository->findById($id);
         return $Produk;
     }
+    public function home()
+    {
+        $Produk = $this->ProduksRepository->getAll();
+        return $Produk;
+    }
 }

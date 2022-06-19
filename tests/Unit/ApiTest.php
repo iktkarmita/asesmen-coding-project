@@ -40,7 +40,7 @@ class ApiTest extends TestCase
             "persediaan" => 20,
             "image" => "baju3.jpg"
         ];
-        $this->json('PUT', 'api/edit/post/2', $data, ['Accept' => 'application/json'])
+        $this->json('PUT', 'api/edit/post/5', $data, ['Accept' => 'application/json'])
             ->assertStatus(200); //200 karena berhasil di UPDATE . NOTE : SUDAH DI CEK DI DATABASE LANGSUNG
     }
     public function test_delete_admin() //DELETE
@@ -50,10 +50,11 @@ class ApiTest extends TestCase
     }
     public function test_show_admin() //SHOW FOR ADMIN ATAY MENAMPILKAN PRODUK SESUAI ID
     {
-        $this->json('GET', 'api/edit/2',  ['Accept' => 'application/json'])
+        $this->json('GET', 'api/edit/5',  ['Accept' => 'application/json'])
             ->assertStatus(200); //200 karena hanya get data . 
     }
     //=========================TEST UNIT UNTUK USER =================// Note : jika error ketik php artisan optimize untuk merefresh framework Laravel dan membersihkan cache
+
     public function test_Read_user() //READ FOR USER
     {
         $this->json('GET', 'api/',  ['Accept' => 'application/json'])
@@ -61,7 +62,7 @@ class ApiTest extends TestCase
     }
     public function test_show_user() //SHOW FOR USER
     {
-        $this->json('GET', 'api/2',  ['Accept' => 'application/json'])
+        $this->json('GET', 'api/5',  ['Accept' => 'application/json'])
             ->assertStatus(200); //200 karena hanya get data. 
     }
     //=========================TEST UNIT LOGIN DAN REGISTER=====================//
@@ -69,7 +70,7 @@ class ApiTest extends TestCase
     {
         $user = [
             "name" => "admin",
-            "email" => "admin@gmail.com",
+            "email" => "adminn@gmail.com",
             "password" => "12345678",
             "password_confirmation" => "12345678"
 
@@ -87,5 +88,19 @@ class ApiTest extends TestCase
 
         $this->json('POST', 'api/login', $user, ['Accept' => 'application/json'])
             ->assertStatus(200); //200 ok akses
+    }
+
+    //===================== Dashboard ketika sesudah login Admin dan User ==================//
+
+    public function test_admin_sesudah_login()
+    {
+        //$this->json('GET', 'api/post', ['Accept' => 'application/json'])
+        //->assertStatus(200); //hanya megakses halaman page admin view
+    }
+
+    public function test_user_sesudah_login()
+    {
+        $this->json('GET', 'api/home', ['Accept' => 'application/json'])
+            ->assertStatus(200); //hanya megakses halaman page user ada datanya jdi di test
     }
 }
