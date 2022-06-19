@@ -45,7 +45,7 @@ class ApiTest extends TestCase
     }
     public function test_delete_admin() //DELETE
     {
-        $this->json('GET', 'api/edit/post/delete/1',  ['Accept' => 'application/json'])
+        $this->json('GET', 'api/edit/post/delete/2',  ['Accept' => 'application/json'])
             ->assertStatus(200); //200 karena berhasil di DELETE . NOTE : SUDAH DI CEK DI DATABASE LANGSUNG
     }
     public function test_show_admin() //SHOW FOR ADMIN ATAY MENAMPILKAN PRODUK SESUAI ID
