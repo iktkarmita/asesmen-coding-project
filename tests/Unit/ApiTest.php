@@ -89,6 +89,11 @@ class ApiTest extends TestCase
         $this->json('POST', 'api/login', $user, ['Accept' => 'application/json'])
             ->assertStatus(200); //200 ok akses
     }
+    public function test_logout()
+    {
+        $this->json('POST', 'api/logout', ['Accept' => 'application/json'])
+            ->assertStatus(200); //200 ok akses
+    }
 
     //===================== Dashboard ketika sesudah login Admin dan User ==================//
 

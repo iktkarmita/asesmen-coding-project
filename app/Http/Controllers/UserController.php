@@ -12,6 +12,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
+    /**
+     * @return void
+     */
     public function index()
     {
         return view('auth.login');
@@ -28,10 +31,26 @@ class UserController extends Controller
             ];
             return response()->json($response, Response::HTTP_FORBIDDEN); //403
         }
-        $response = [
-            'message' => 'Berhasil Login!!',
-            'data' => $token
-        ];
-        return response()->json($response, Response::HTTP_OK); //200 ok
+
+        return $this->responseWithToken($token); //200 ok
+    }
+    public function logout()
+    {
+        auth()->logout();
+
+        return response()->json(['message' => 'sukses logout!!'], Response::HTTP_OK); //200 ok
+    }
+    /**
+     * @param string $token
+     * 
+     * @return \illuminate\Http\JsonResponse
+     */
+    protected function responseWithToken($token)
+    {
+        return response()->json([
+            'message' => 'login berhasil!!',
+            'access_token' => $token
+
+        ], Response::HTTP_OK); //200 ok
     }
 }

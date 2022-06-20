@@ -49,6 +49,8 @@ Route::get('/{id}', [ProdukController::class, 'show']); //SHOW ATAU MENAMPILKAN 
 
 Route::post('/login', [UserController::class, 'loginTest']);
 
+Route::post('/logout', [UserController::class, 'logout']);
+
 Route::post('/register', [RegisterController::class, 'registerTest']);
 
 //============= Halaman Dashboard admin ketika sesudah login =================//
