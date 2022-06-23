@@ -7,8 +7,10 @@ use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProduksController;
-use App\Http\Controllers\RegisterController;
+//use App\Http\Controllers\RegisterController;
 use Modules\Post\Http\Controllers\PostController;
+use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +22,32 @@ use Modules\Post\Http\Controllers\PostController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-//============================= Proses CRUD untuk ADMIN ===================//
 
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('/logout', [LoginController::class, 'logout']);
+});
+
+//================ LOGIN DAN REGISTER ====================//
+
+//Route::post('/login', [UserController::class, 'loginTest']);
+Route::post('auth/login', [LoginController::class, '__invoke']);
+
+//Route::post('/register', [RegisterController::class, 'registerTest']); //yang lama tidak ada web token
+Route::post('auth/register', [RegisterController::class, '__invoke']); //ada web token
+
+// ============================= Halaman Utama Web page untuk USER ========================== //
+
+Route::get('/', [ProdukController::class, 'index']); //READ
+
+// ============================= Halaman Utama Web page untuk USER ========================== //
+
+Route::get('/{id}', [ProdukController::class, 'show']); //SHOW ATAU MENAMPILKAN DATA BERDASARKAN ID
+
+//============================= Proses CRUD untuk ADMIN ===================//
 Route::get('/edit', [PostController::class, 'index_Produk']); //READ
 
 Route::post('/post/store', [PostController::class, 'store']); //CREATE
@@ -32,27 +58,10 @@ Route::get('/edit/{id}', [PostController::class, 'ProdukEdit']); //SHOW ATAU MEN
 
 Route::get('/edit/post/delete/{id}', [PostController::class, 'destroy']); //DELETE 
 
+//============= Halaman Dashboard admin ketika sesudah login =================//
 
-// ============================= Halaman Utama Web page untuk USER ========================== //
-
-Route::get('/', [ProdukController::class, 'index']); //READ
+Route::get('/post', [PostController::class, 'index']); //Dashboard Admin 
 
 //============= Halaman Dashboard user ketika sesudah login =================//
 
 Route::get('/home', [ProdukController::class, 'home']); //Dashboard User / Pengunjung ketika sesudah login
-
-// ============================= Halaman Utama Web page untuk USER ========================== //
-
-Route::get('/{id}', [ProdukController::class, 'show']); //SHOW ATAU MENAMPILKAN DATA BERDASARKAN ID
-
-//================ LOGIN DAN REGISTER ====================//
-
-Route::post('/login', [UserController::class, 'loginTest']);
-
-Route::post('/logout', [UserController::class, 'logout']);
-
-Route::post('/register', [RegisterController::class, 'registerTest']);
-
-//============= Halaman Dashboard admin ketika sesudah login =================//
-
-Route::get('/post', [PostController::class, 'index']); //Dashboard Admin 

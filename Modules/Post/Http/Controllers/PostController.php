@@ -23,7 +23,7 @@ class PostController extends Controller
     //private $PostRepository;
     public function __construct(PostRepository $PostRepository)
     {
-
+        //$this->middleware('auth');
         $this->PostRepository = $PostRepository;
     }
 

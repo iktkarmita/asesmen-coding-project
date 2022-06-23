@@ -19,7 +19,7 @@ class UserController extends Controller
     {
         return view('auth.login');
     }
-    public function loginTest()
+    public function loginTest($request)
     {
         $LoginData = request(['email', 'password']);
 
@@ -32,7 +32,8 @@ class UserController extends Controller
             return response()->json($response, Response::HTTP_FORBIDDEN); //403
         }
 
-        return $this->responseWithToken($token); //200 ok
+        return (new UserController($request->user()))
+            ->additional(['meta' => ['token' => $token,]]);
     }
     public function logout()
     {
