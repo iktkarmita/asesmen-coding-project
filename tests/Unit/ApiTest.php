@@ -77,23 +77,21 @@ class ApiTest extends TestCase
         $this->json('POST', 'api/auth/register', $user, ['Accept' => 'application/json'])
             ->assertStatus(201); //201 created
     }
-    public function test_login()
-    {
+    public function test_login_dan_test_logout()
+    {  //Memaasukan data email dan password #Login
         $user = [
             "email" => "admin@gmail.com",
             "password" => "12345678"
         ];
 
-        $this->json('POST', 'api/auth/login', $user, ['Accept' => 'application/json'])
-            ->assertStatus(200); //200 ok akses
+        //,emdapatkan response 200ok dan menampung data ke variabel $response
+        $response =  $this->json('POST', 'api/auth/login', $user, ['Accept' => 'application/json'])
+            ->assertStatus(200); //200 ok ases
+
+        //#logout dan mendelete token 
+        //mendapatkan data token dari variabel $response dan mendelete token, bisa di cek di database di tabel personal_access_tokens
+        auth()->user()->tokens('token', $response)->delete();
     }
-    //public function test_logout()
-    //{
-    //$this->json('POST', 'api/logout', [
-    //'Accept' => 'application/json',
-    //'Authorization' => 'Bearer 11|4LABXFDSePiNxZkJO29Lf8NrfAcaCt1MUKVATtjp']) //sudah di test di POSTMAN untuk logout
-    //->assertStatus(200); //200 ok akses
-    //}
 
     //===================== Dashboard ketika sesudah login Admin dan User ==================//
 
