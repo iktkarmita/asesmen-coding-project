@@ -40,7 +40,7 @@ class PostController extends Controller
     public function index_Produk() //READ FOR ADMIN
     {
 
-        $Produk = $this->ProduksRepository->getAll();
+        $Produk = $this->PostRepository->getAll();
         return $Produk;
     }
 
