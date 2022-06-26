@@ -4,22 +4,40 @@ namespace Modules\Post\Repositories;
 
 use Illuminate\Support\Str;
 use Modules\Post\Models\Produks;
+use Symfony\Component\HttpFoundation\Response;
 
 class PostRepository
 {
     public function getAll()
     {
-        return Produks::all();
+        $Produk = Produks::all();
+        $response = [
+            'message' => 'List PRODUK All',
+            'data' => $Produk
+        ];
+
+        return response()->json($response, Response::HTTP_OK); //200 OK
     }
     public function findById($id)
     {
         $Produk = Produks::where('id', $id)->firstOrFail();
-        return $this->format($Produk);
+        $response = [
+            'message' => 'List PRODUK order by id',
+            'data' => $Produk
+        ];
+
+        return response()->json($response, Response::HTTP_OK); //200 OK
     }
 
     public function delete($id)
     {
-        Produks::where('id', $id)->delete();
+        $Produk = Produks::where('id', $id)->delete();
+        $response = [
+            'message' => 'Produk telah di hapus',
+            'data' => $Produk
+        ];
+
+        return response()->json($response, Response::HTTP_OK); //200 OK
     }
     public function format($Produk)
     {
