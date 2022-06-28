@@ -10,7 +10,7 @@ use App\Repositories\ProduksRepository;
 use Symfony\Component\HttpFoundation\Response;
 
 
-class ProduksController extends Controller
+class HomeController extends Controller
 {
 
     public function home()
