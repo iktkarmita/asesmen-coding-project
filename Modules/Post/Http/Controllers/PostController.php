@@ -60,12 +60,12 @@ class PostController extends Controller
      */
     public function store(Request $request) //CREATE FOR ADMIN
     {
-        $validatedData = Validator::make($request->all(), [
-            'nama' => 'required|max:11',
+        $validatedData = $request->validate([
+            'nama' => 'required|max:14',
             'keterangan' => 'required',
             'harga' => ['required', 'numeric'],
             'persediaan' => ['required', 'numeric'],
-            'image' => 'min:5'
+            'image' => 'image|file|min:5'
         ]);
 
         if ($request->file('image')) {
@@ -73,7 +73,7 @@ class PostController extends Controller
         }
         //
         //dd($request->except(['_token', 'submit']));
-        $Produk = Produks::create($request->all());
+        $Produk = Produks::create($validatedData);
 
         $response = [
             'message' => 'PRODUK berhasil di tambah!!',

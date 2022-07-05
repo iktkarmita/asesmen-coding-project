@@ -21,23 +21,13 @@ class PostRepository
     public function findById($id)
     {
         $Produk = Produks::where('id', $id)->firstOrFail();
-        $response = [
-            'message' => 'List PRODUK order by id',
-            'data' => $Produk
-        ];
-
-        return response()->json($response, Response::HTTP_OK); //200 OK
+        return $Produk; //200 OK
     }
 
     public function delete($id)
     {
         $Produk = Produks::where('id', $id)->delete();
-        $response = [
-            'message' => 'Produk telah di hapus',
-            'data' => $Produk
-        ];
-
-        return response()->json($response, Response::HTTP_OK); //200 OK
+        return $Produk; //200 OK
     }
     public function format($Produk)
     {

@@ -37,8 +37,8 @@
         </div>
         <div class="mb-3">
             <label for="harga" class="form-label
-            @error('harga') is-invalid @enderror" name="harga" required
-                autocomplete="harga">Harga</label>
+            @error('harga') is-invalid @enderror" name="harga"
+                required autocomplete="harga">Harga</label>
             <input type="text" name="harga" class="form-control" id="harga">
 
             @error('harga')
@@ -66,9 +66,10 @@
 
             </div>
             <div class="custom-file">
-                <input type="file" class="custom-file-input" id="image" name="image" aria-describedby="image
-                                              @error('image') is-invalid @enderror" name="image" required
-                    autocomplete="image">
+                <input type="file" class="custom-file-input" id="image" name="image"
+                    aria-describedby="image
+                                              @error('image') is-invalid @enderror"
+                    name="image" required autocomplete="image">
 
 
                 <label class="custom-file-label" name="image" for="image">Choose file</label>
@@ -81,7 +82,7 @@
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
-        <button type="submit" name="submit" class="btn btn-primary" value="Save">Add Product</button>
+        <button type="submit" class="btn btn-primary">Add Product</button>
     </form>
     </div>
 @endsection
